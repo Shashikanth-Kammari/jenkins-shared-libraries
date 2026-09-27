@@ -38,17 +38,8 @@ def call(Map configMap){
 
             stage('Docker build') {
                 steps {
-                sh """
-                    aws ecr get-login-password --region ${region} | docker login 
-                    --username AWS --password-stdin ${account_id}.dkr.ecr.${region}.amazonaws.com
-
-                    docker build -t ${account_id}.dkr.ecr.${region}.amazonaws.com/
-                    expense-backend:${appVersion} .
-
-                    docker push ${account_id}.dkr.ecr.${region}.amazonaws.com/ 
-                    expense-backend:${appVersion}
-                    
-                    zip -q -r backend.${appVersion}.zip * -x Jenkinsfile -x backend.${appVersion}.zip
+                sh """            
+                    zip -q -r ${component}.${appVersion}.zip * -x Jenkinsfile -x backend.${appVersion}.zip
                     ls -ltr              
                 """
                 }
