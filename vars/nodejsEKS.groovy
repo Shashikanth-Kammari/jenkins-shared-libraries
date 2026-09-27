@@ -12,7 +12,8 @@ def call(Map configMap){
             appVersion = ''
             nexusUrl = pipelineGlobals.nexusURL()
             region = pipelineGlobals.region()
-            account_id= pipelineGlobals.account_id()
+            account_id = pipelineGlobals.account_id()
+            component = configMap.get("component")
         }
         
         stages {

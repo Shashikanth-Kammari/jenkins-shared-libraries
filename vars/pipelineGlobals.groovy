@@ -3,7 +3,7 @@ statis final string region(){
 }
 
 statis final string nexusURL(){
-    return "shashikanth.db.online"
+    return "nexus.db.online:8081"
 }
 
 statis final string account_id(){
