@@ -10,9 +10,9 @@ def call(Map configMap){
         }
         environment {
             appVersion = ''
-            nexusUrl = 'http://shashikanth.online:8081'
-            region = "us-east-1"
-            account_id= "give-your-aws-account-id"
+            nexusUrl = pipelineGlobals.nexusURL()
+            region = pipelineGlobals.region()
+            account_id= pipelineGlobals.account_id()
         }
         
         stages {

@@ -5,3 +5,7 @@ statis final string region(){
 statis final string nexusURL(){
     return "shashikanth.db.online"
 }
+
+statis final string account_id(){
+    return "give-you_aws_account_id"
+}
