@@ -25,7 +25,7 @@ pipeline {
             stage('Deploy'){
                 steps{
                     script{
-                        // deploy to specific environment like QA, UAT, PERF, etc.
+                        // deploy to specific environment like QA, UAT, PERF,Regression etc.
                     }
                 }
             }
