@@ -40,7 +40,7 @@ pipeline {
         post {
             always { 
                 echo 'I will always say Hello again!'
-                deleteDir() //It will clear the directory after tests are done.
+                deleteDir() //It will clear the directory after tests are done for free up the space.
             }
             success { 
                 echo 'I will run when pipeline is success'
