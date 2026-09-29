@@ -29,7 +29,7 @@ pipeline {
                     }
                 }
             }
-            stage('Integrations tests') {
+            stage('Integration tests') {
                 steps {
                     script{
                     // Run integration tests
