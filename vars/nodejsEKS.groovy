@@ -85,7 +85,7 @@ def call(Map configMap){
             stage('Verify Deployment'){
                 steps{
                     script{
-                        rollbackStatus = sh(script: "kubectl rollout status deployment/backend -n ${project} --timeout=1m || true", returnStdout: true).trim()
+                        rollbackStatus = sh(script: "kubectl rollout status deployment/${component} -n ${project} --timeout=1m || true", returnStdout: true).trim()
                         if(rollbackStatus.contains('successfully rolled out')){
                             echo "Deployment is successfull"
                         }
@@ -97,10 +97,10 @@ def call(Map configMap){
                             else{
                                 sh """
                                 aws eks update-kubeconfig --region ${region} --name ${project}-dev
-                                helm rollback backend -n ${project} 0
+                                helm rollback ${component} -n ${project} 0
                                 sleep 60
                                 """
-                                rollbackStatus = sh(script: "kubectl rollout status deployment/backend -n expense --timeout=2m || true", returnStdout: true).trim()
+                                rollbackStatus = sh(script: "kubectl rollout status deployment/${component} -n expense --timeout=2m || true", returnStdout: true).trim()
                                 if(rollbackStatus.contains('successfully rolled out')){
                                     error "Deployment is failed, Rollback is successfull"
                                 }
